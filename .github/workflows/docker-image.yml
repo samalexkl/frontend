@@ -18,4 +18,4 @@ jobs:
           username: samuelucam
           password: ${{ secrets.DOCK }}
       - name: Push image
-        run: docker push usuario/docker-repo:latest
+        run: docker push samuelucam/docker-repo:latest
