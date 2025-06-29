@@ -1,0 +1,21 @@
+name: Build and push Docker image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build image
+        run: docker build -t usuario/docker-repo:latest .
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: samuelucam
+          password: ${{ secrets.DOCK }}
+      - name: Push image
+        run: docker push usuario/docker-repo:latest
